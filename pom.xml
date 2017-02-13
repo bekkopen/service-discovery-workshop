@@ -4,10 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>no.bekk</groupId>
-    <artifactId>servicediscoveryworkshop</artifactId>
+    <artifactId>service-discovery-workshop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <name>service-discovery-workshop</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,5 +17,6 @@
 
     <modules>
         <module>backend</module>
+        <module>service</module>
     </modules>
 </project>

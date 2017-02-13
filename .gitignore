@@ -1,2 +1,5 @@
 .vagrant
 kladd.txt
+.idea
+*.iml
+target/

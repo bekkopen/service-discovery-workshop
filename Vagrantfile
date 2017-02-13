@@ -27,25 +27,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.network "private_network", ip: "172.20.100.5"
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.hostname = "app1"
+    master.vm.hostname = "backend1"
   end
   config.vm.define :backend2 do |master|
     master.vm.network "private_network", ip: "172.20.100.6"
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.hostname = "app2"
+    master.vm.hostname = "backend2"
   end
   config.vm.define :webapp1 do |master|
     master.vm.network "private_network", ip: "172.20.100.7"
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.hostname = "app1"
+    master.vm.hostname = "webapp1"
   end
   config.vm.define :webapp2 do |master|
     master.vm.network "private_network", ip: "172.20.100.8"
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.hostname = "app2"
+    master.vm.hostname = "webapp2"
   end
 
 end

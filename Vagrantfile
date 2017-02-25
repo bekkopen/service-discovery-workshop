@@ -43,6 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
     master.vm.provision "shell", path: "provision/deploy_frontend.sh"
+    master.vm.provision "shell", path: "provision/deploy_service.sh"
     master.vm.hostname = "webapp1"
   end
   config.vm.define :webapp2 do |master|
@@ -51,6 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
     master.vm.provision "shell", path: "provision/deploy_frontend.sh"
+    master.vm.provision "shell", path: "provision/deploy_service.sh"
     master.vm.hostname = "webapp2"
   end
 

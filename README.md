@@ -53,4 +53,6 @@ consul members # list all members in the cluster
 exit
 ```
 
+# The backend
 
+Run ```curl http://localhost:8080/backend/info``` on webapp1 and webapp2 to check if they are running.

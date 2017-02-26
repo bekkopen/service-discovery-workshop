@@ -19,6 +19,8 @@ nohup consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -config-dir
 
 Start a consul agent on an all the application nodes, and connect it to the master
 
+Have a look at the Web UI on http://localhost:8500/ui
+
 ```bash
 ### Setup backend1
 vagrant ssh backend1
@@ -56,3 +58,10 @@ exit
 # The backend
 
 Run ```curl http://localhost:8080/backend/info``` on webapp1 and webapp2 to check if they are running.
+
+
+# Healthchecks
+
+All apps configured with health endpoints
+
+curl http://localhost:8081/manage/health

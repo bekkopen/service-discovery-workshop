@@ -23,3 +23,13 @@ wget -q -nc "https://releases.hashicorp.com/consul/0.7.4/${WEB_GUI}"
 sudo mkdir -p /opt/consul-web
 sudo unzip "${WEB_GUI}" -d /opt/consul-web/
 sudo chown -R vagrant /opt/consul-web/
+
+### Install consul-template
+
+CONSUL_TEMPLATE="consul-template_0.18.1_linux_amd64.zip"
+
+wget -q -nv "https://releases.hashicorp.com/consul-template/0.18.1/${CONSUL_TEMPLATE}"
+unzip "${CONSUL_TEMPLATE}"
+sudo cp consul-template /usr/local/bin/
+sudo chmod 755 /usr/local/bin/consul-template
+

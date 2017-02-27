@@ -22,17 +22,17 @@ Start a consul agent on an all the application nodes, and connect it to the mast
 Have a look at the Web UI on http://localhost:8500/ui
 
 ```bash
-### Setup backend1
-vagrant ssh backend1
-nohup consul agent -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.5 -node backend1 &
+### Setup service1
+vagrant ssh service1
+nohup consul agent -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.5 -node service1 &
 sleep 2 # Wait for consul to start
 consul join 172.20.100.2
 consul members # list all members in the cluster
 exit
 
-# Setup backend2
-vagrant ssh backend2
-nohup consul agent -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.6 -node backend2 &
+# Setup service2
+vagrant ssh service2
+nohup consul agent -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.6 -node service2 &
 sleep 2 # Wait for consul to start
 consul join 172.20.100.2
 consul members # list all members in the cluster

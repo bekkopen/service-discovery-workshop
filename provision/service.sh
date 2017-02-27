@@ -2,7 +2,7 @@
 
 set -e
 
-PID_FILE=/home/vagrant/service.pid
+PID_FILE=/home/ubuntu/service.pid
 
 cd `dirname $0`
 

@@ -2,4 +2,7 @@
 
 sudo apt-get install --yes nginx
 
-sudo cp -r /vagrant/frontend/src/* /usr/share/nginx/html
+sudo cp -r /vagrant/frontend/src/* /var/www/html
+sudo cp /vagrant/provision/nginx-site /etc/nginx/sites-available/default
+
+sudo service nginx reload

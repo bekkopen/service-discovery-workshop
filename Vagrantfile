@@ -20,7 +20,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :master do |master|
     master.vm.network "private_network", ip: "172.20.100.2"
     master.vm.network "forwarded_port", guest: 8500, host: 8500
+    master.vm.network "forwarded_port", guest: 80, host: 8888
     master.vm.provision "shell", path: "provision/install_consul.sh"
+    master.vm.provision "shell", path: "provision/install_haproxy.sh"
+    master.vm.provision "shell", path: "provision/deploy_frontend.sh"
     master.vm.hostname = "master"
   end
   config.vm.define :service1 do |master|
@@ -39,19 +42,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   config.vm.define :webapp1 do |master|
     master.vm.network "private_network", ip: "172.20.100.7"
-    master.vm.network "forwarded_port", guest: 80, host: 8081
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.provision "shell", path: "provision/deploy_frontend.sh"
     master.vm.provision "shell", path: "provision/deploy_service.sh"
     master.vm.hostname = "webapp1"
   end
   config.vm.define :webapp2 do |master|
     master.vm.network "private_network", ip: "172.20.100.8"
-    master.vm.network "forwarded_port", guest: 80, host: 8082
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.provision "shell", path: "provision/deploy_frontend.sh"
     master.vm.provision "shell", path: "provision/deploy_service.sh"
     master.vm.hostname = "webapp2"
   end

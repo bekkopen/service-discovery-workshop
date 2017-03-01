@@ -18,8 +18,7 @@ open class BackendApplication {
         val username = System.getenv("JDBC_USERNAME") ?: "user"
         val password = System.getenv("JDBC_PASSWORD") ?: "pass"
         val hostname = InetAddress.getLocalHost().getHostName()
-        val serviceEndpoint = System.getenv("SERVICE_ENDPOINT")
-        val usesTags = serviceEndpoint != null
+        val serviceEndpoint = ServiceEndpoint()
     }
 
     @Bean

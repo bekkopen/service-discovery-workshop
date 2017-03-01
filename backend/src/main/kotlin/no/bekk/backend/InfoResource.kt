@@ -13,7 +13,7 @@ class InfoResource {
                 isInMemory,
                 BackendApplication.jdbcUrl,
                 BackendApplication.hostname,
-                BackendApplication.usesTags
+                BackendApplication.serviceEndpoint.usingTags()
         )
     }
 

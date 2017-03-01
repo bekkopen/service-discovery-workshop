@@ -15,7 +15,7 @@ class TagService {
             .build()
 
     fun getTags(): List<String> {
-        if (!BackendApplication.usesTags) {
+        if (!BackendApplication.serviceEndpoint.usingTags()) {
             return listOf()
         }
 
@@ -23,7 +23,7 @@ class TagService {
             println("Fetching from " + BackendApplication.serviceEndpoint)
             val response = client
                     .newCall(Request.Builder()
-                            .url(BackendApplication.serviceEndpoint + "/v1")
+                            .url(BackendApplication.serviceEndpoint.serviceEndpoint() + "/v1")
                             .build())
                     .execute()
             val body = response.body()

@@ -6,7 +6,7 @@ import java.util.*
 class ServiceEndpoint {
     private val serviceEndpoint = System.getenv("SERVICE_ENDPOINT")
 
-    fun serviceEndpoint(): String {
+    fun serviceEndpoint(): String? {
         return backendurlFromConfig() ?: serviceEndpoint
     }
 
@@ -21,8 +21,9 @@ class ServiceEndpoint {
             val inputStream = file.inputStream()
             props.load(inputStream)
             inputStream.close()
-            if (props.contains("backend.url")) {
-                return props["backend.url"].toString()
+            if (props.containsKey("service.url")) {
+                print("Returning service.url")
+                return props["service.url"].toString()
             }
         }
         return null

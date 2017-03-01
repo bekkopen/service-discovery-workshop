@@ -13,7 +13,8 @@ class InfoResource {
                 isInMemory,
                 BackendApplication.jdbcUrl,
                 BackendApplication.hostname,
-                BackendApplication.serviceEndpoint.usingTags()
+                BackendApplication.serviceEndpoint.usingTags(),
+                BackendApplication.serviceEndpoint.serviceEndpoint() ?: "no service endpoint"
         )
     }
 
@@ -21,6 +22,7 @@ class InfoResource {
             val jdbcInMemory: Boolean,
             val jdbcUrl: String,
             var hostname: String,
-            val usesTags: Boolean
+            val usesTags: Boolean,
+            val serviceEndpoint: String
     )
 }

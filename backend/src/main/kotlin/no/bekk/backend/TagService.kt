@@ -20,10 +20,12 @@ class TagService {
         }
 
         try {
-            println("Fetching from " + BackendApplication.serviceEndpoint)
+            val endpoints = BackendApplication.serviceEndpoint.serviceEndpoint()
+            val chosenEndpoint = endpoints[(Math.random() * endpoints.size).toInt()]
+            println("Fetching from " + chosenEndpoint)
             val response = client
                     .newCall(Request.Builder()
-                            .url(BackendApplication.serviceEndpoint.serviceEndpoint() + "/v1")
+                            .url(chosenEndpoint + "/v1")
                             .build())
                     .execute()
             val body = response.body()

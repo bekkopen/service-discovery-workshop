@@ -6,15 +6,18 @@ import java.util.*
 class ServiceEndpoint {
     private val serviceEndpoint = System.getenv("SERVICE_ENDPOINT")
 
-    fun serviceEndpoint(): String? {
-        return backendurlFromConfig() ?: serviceEndpoint
+    fun serviceEndpoint(): List<String> {
+        if (backendurlFromConfig().isEmpty())
+            return listOf(serviceEndpoint).filterNotNull()
+        else
+            return backendurlFromConfig()
     }
 
     fun usingTags(): Boolean {
-        return backendurlFromConfig() != null
+        return backendurlFromConfig().isNotEmpty()
     }
 
-    private fun backendurlFromConfig(): String?  {
+    private fun backendurlFromConfig(): List<String>  {
         val file = File("config.properties")
         if (file.exists()) {
             val props = Properties()
@@ -22,10 +25,9 @@ class ServiceEndpoint {
             props.load(inputStream)
             inputStream.close()
             if (props.containsKey("service.url")) {
-                print("Returning service.url")
-                return props["service.url"].toString()
+                return props["service.url"].toString().split(",")
             }
         }
-        return null
+        return emptyList()
     }
 }

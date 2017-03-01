@@ -14,7 +14,7 @@ class InfoResource {
                 BackendApplication.jdbcUrl,
                 BackendApplication.hostname,
                 BackendApplication.serviceEndpoint.usingTags(),
-                BackendApplication.serviceEndpoint.serviceEndpoint() ?: "no service endpoint"
+                BackendApplication.serviceEndpoint.serviceEndpoint()
         )
     }
 
@@ -23,6 +23,6 @@ class InfoResource {
             val jdbcUrl: String,
             var hostname: String,
             val usesTags: Boolean,
-            val serviceEndpoint: String
+            val serviceEndpoint: List<String>
     )
 }

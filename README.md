@@ -64,22 +64,56 @@ files](https://www.consul.io/intro/getting-started/services.html). The
 `/etc/consul.d` directory is already present.
 
 Register the webapp using the JSON file. The application is running on port
-8080. The file must be created on the node the application is running on.
+8080. The file must be created on the node the application is running on. After
+creating the file, run `consul reload` on the node, to make consul re-read the
+`/etc/consul.d`-directory.
 
 Use `vagrant ssh webapp1` and `vagrant ssh webapp2` to connect to the two
 servers running the application.
 
-You should also start the application by running `backend.sh start`.
+You should also start the application by running `backend.sh start` inside the
+VM.
 
 Use the [Consul Web
 API](https://www.consul.io/docs/agent/http/catalog.html#catalog_services) to
-query and check if you services has been registered. The easiest way is to use
+query and check if your services has been registered. The easiest way is to use
 curl from inside one of the application servers. If you called you service
 `backend`, the command should be: `curl
 http://localhost:8500/v1/catalog/service/backend`
 
 We also also installed Consul UI for you. Open a browser on
 (http://localhost:8500/) to see you registered service.
+
+We have set up HAProxy to serve the application using a static config. We will
+be using the registered service later. For now you can go to
+(http://localhost:8888/) to see that the application works.
+
+## 2. Registering services through API
+
+There are two ways of registering a service in Consul. In the first task we
+registered a service with a JSON file. The other way use to register a service
+is with the [Consul
+API](https://www.consul.io/docs/agent/http/catalog.html#catalog_register)
+
+You can get the ipaddress of the server by running `ifconfig` on the server.
+Use the address starting with `172.20.100.`.
+
+Use the Consul API to register the services running on `service1` and
+`service2`. A tip is to log in to one of them and put the JSON into a file, and
+use curl to call the API. Example below: `-d` sends the data in `filename.json`
+as the HTTP body.
+
+```bash
+curl -X PUT -d @filename.json http://localhost:8500/v1/catalog/register
+```
+
+Check that the services has been registered correctly.
+
+## 3. Using consul-template
+
+Our webapp-backend is going to talk to another service. To know the URL of this
+service, the webapp-backend reads `config.properties`, and put in
+`service.url=` with a comma-seperated list of URLs.
 
 # The backend
 

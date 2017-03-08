@@ -1,5 +1,6 @@
 # service-discovery-workshop
 
+![systems overview](systems-overview.png)
 
 Initial setup
 -------------

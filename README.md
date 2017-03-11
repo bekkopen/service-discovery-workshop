@@ -129,6 +129,12 @@ application can read that file, and always have up-to-date URLs to call.
 The template files are written as [Go-template with some
 extensions](https://github.com/hashicorp/consul-template#templating-language)
 
+By adding `-` when printing variables in the template, you also remove
+whitespace. `{{- .Address }}` will remove the whitespace and newlines before
+the variable, and `{{ .Address -}}` will remove after. To create a comma
+seperated list, see the tip in the [Stackoverflow
+answer](http://stackoverflow.com/a/21305933)
+
 The [service-command](https://github.com/hashicorp/consul-template#service)
 will list out all the IP-s and ports for a given service. Use this to iterate
 through the nodes. The `range`-command is useful to iterate over the values.

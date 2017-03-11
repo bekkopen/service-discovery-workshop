@@ -201,13 +201,3 @@ you shouldnt see any errors.
 Try also to log in on the `master` node, and verify that
 `/etc/haproxy/haproxy.cfg` now only have one server entry.
 
-# The backend
-
-Run ```curl http://localhost:8080/backend/info``` on webapp1 and webapp2 to check if they are running.
-
-
-# Healthchecks
-
-All apps configured with health endpoints
-
-curl http://localhost:8081/manage/health

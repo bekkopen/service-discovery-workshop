@@ -128,7 +128,7 @@ service, the webapp-backend reads `config.properties`, and put in
 automatically.
 
 To create this file we are going to use a tool called
-[consule-template](https://github.com/hashicorp/consul-template#usage). The
+[consul-template](https://github.com/hashicorp/consul-template#usage). The
 default configuration for consul-template is fine, so no need to create a
 configuration file. The program will watch for changes in the consul cluster,
 and write a new file based on template after each change. That way our
@@ -147,7 +147,7 @@ The [service-command](https://github.com/hashicorp/consul-template#service)
 will list out all the IP-s and ports for a given service. Use this to iterate
 through the nodes. The `range`-command is useful to iterate over the values.
 
-Use consule-template to create the `config.properties` file, and with the
+Use consul-template to create the `config.properties` file, and with the
 property `service.url=` with IP and and port in a comma separeted list.
 Example of a rendered file:
 

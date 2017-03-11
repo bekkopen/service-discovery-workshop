@@ -30,7 +30,7 @@ nohup consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -config-dir
 
 Start a consul agent on an all the application nodes, and connect it to the master
 
-Have a look at the Web UI on http://localhost:8500/ui
+Have a look at the Web UI on <http://localhost:8500/ui>
 
 ```bash
 ### Setup service1
@@ -92,11 +92,11 @@ curl from inside one of the application servers. If you called you service
 http://localhost:8500/v1/catalog/service/backend`
 
 We also also installed Consul UI for you. Open a browser on
-(http://localhost:8500/) to see you registered service.
+<http://localhost:8500/> to see you registered service.
 
 We have set up HAProxy to serve the application using a static config. We will
 be using the registered service later. For now you can go to
-(http://localhost:8888/) to see that the application works.
+<http://localhost:8888/> to see that the application works.
 
 ## 2. Registering services through API
 
@@ -157,7 +157,7 @@ service.url=172.20.100.5:8080,172.20.100.6:8080
 ```
 
 You have now connected the tag service to our application. Go to
-(http://localhost:8888/) to see that that you can add tags to to-do's. You can
+<http://localhost:8888/> to see that that you can add tags to to-do's. You can
 also check in the bottom which service the application is using. Refreshing a
 couple of times should change this address.
 

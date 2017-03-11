@@ -25,7 +25,13 @@ class ServiceEndpoint {
             props.load(inputStream)
             inputStream.close()
             if (props.containsKey("service.url")) {
-                return props["service.url"].toString().split(",").filter { it.isNotBlank() }
+                return props["service.url"].toString()
+                        .split(",")
+                        .filter { it.isNotBlank() }
+                        .map {
+                            if (it.startsWith("http://")) it
+                            else "http://" + it
+                        }
             }
         }
         return emptyList()

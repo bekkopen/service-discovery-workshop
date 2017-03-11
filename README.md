@@ -93,13 +93,11 @@ be using the registered service later. For now you can go to
 There are two ways of registering a service in Consul. In the first task we
 registered a service with a JSON file. The other way use to register a service
 is with the [Consul
-API](https://www.consul.io/docs/agent/http/catalog.html#catalog_register)
+API](https://www.consul.io/docs/agent/http/agent.html#agent_service_register).
 
 Try using the smallest JSON file you can use. We do not use a healthcheck at
-this time.
-
-You can get the ipaddress of the server by running `ifconfig` on the server.
-Use the address starting with `172.20.100.`.
+this time. Since we are using the agent-API, you dont even need to have an IP
+adress in the file, since it will use the agents IP if it is missing.
 
 Use the Consul API to register the services running on `service1` and
 `service2`. A tip is to log in to one of them and put the JSON into a file, and
@@ -107,7 +105,7 @@ use curl to call the API. Example below: `-d` sends the data in `filename.json`
 as the HTTP body.
 
 ```bash
-curl -X PUT -d @filename.json http://localhost:8500/v1/catalog/register
+curl -X PUT -d @filename.json http://localhost:8500/v1/agent/catalog/register
 ```
 
 Check that the services has been registered correctly.

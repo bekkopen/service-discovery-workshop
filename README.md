@@ -12,25 +12,25 @@ images you need, and you will be ready for the workshop.
 
 ![systems overview](systems-overview.png)
 
-Initial setup
--------------
+## 0. Initial setup
 
-Start five virtual servers with
+We are using five virtual machines in this workshop. See the diagram above. To start the servers run:
 
 ```bash
 vagrant up
 ```
 
-Start a consul server on the master node
+To start up Consul on the master node:
 
 ```bash
-vagrant ssh master
+vagrant ssh master # Log in to the master node
 nohup consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -config-dir /etc/consul.d/ -ui-dir /opt/consul-web/ -bind 172.20.100.2 -client 0.0.0.0 -node master &
+exit # Exit the virtual machine
 ```
 
-Start a consul agent on an all the application nodes, and connect it to the master
-
-Have a look at the Web UI on <http://localhost:8500/ui>
+You should have a consul agent running on each node to use Consul. The commands
+below will log in and start the consul agent on each node, and connects them to
+the master:
 
 ```bash
 ### Setup service1
@@ -65,6 +65,8 @@ consul join 172.20.100.2
 consul members # list all members in the cluster
 exit
 ```
+
+Have a look at the Web UI on <http://localhost:8500/ui>
 
 ## 1. Register services
 

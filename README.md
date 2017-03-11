@@ -121,10 +121,10 @@ automatically.
 
 To create this file we are going to use a tool called
 [consule-template](https://github.com/hashicorp/consul-template#usage). The
-program will watch for changes in the consul cluster, and write a new file
-based on template after each change. That way our application can read that
-file, and always have up-to-date URLs to call. The default configuration is
-fine, so no need to create a configuration file.
+default configuration for consul-template is fine, so no need to create a
+configuration file. The program will watch for changes in the consul cluster,
+and write a new file based on template after each change. That way our
+application can read that file, and always have up-to-date URLs to call.
 
 The template files are written as [Go-template with some
 extensions](https://github.com/hashicorp/consul-template#templating-language)

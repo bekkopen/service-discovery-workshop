@@ -151,6 +151,25 @@ You have now connected the tag service to our application. Go to
 also check in the bottom which service the application is using. Refreshing a
 couple of times should change this address.
 
+## 4. Configuring HAProxy with consul-template
+
+HAProxy is a load balancing software which is running on the `master` node. It
+is now configured to serve HTTP requests using static IP adresses to our webapp
+nodes.
+
+Consule template have third argument to `-template` that allows you to specify
+a reload command. `service haproxy reload` will reload the HAProxy config. You
+will find the configuration file used in `/etc/haproxy/haproxy.cfg` on the
+`master` node. Use this file as the basis for your template.
+
+Using consul template, reconfigure HAProxy to be updated for each change in
+consul.
+
+## 5. Healtchecks
+
+1. Configure healthchecks for the backends
+1. Turn off the webapp and check that its status has been updated
+
 # The backend
 
 Run ```curl http://localhost:8080/backend/info``` on webapp1 and webapp2 to check if they are running.

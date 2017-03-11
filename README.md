@@ -177,14 +177,14 @@ will find the configuration file used in `/etc/haproxy/haproxy.cfg` on the
 Using consul template, reconfigure HAProxy to be updated for each change in
 consul.
 
-## 5. Healtchecks
+## 5. Healthchecks
 
 Now we are adding healthchecks to our webapp (running on `webapp1` and `webapp2`)
 
 First we need to deregister our service. With consul you are not able to modify
 a service entry after registration, so we need to deregister. Use the
 [deregister-API](https://www.consul.io/docs/agent/http/agent.html#agent_service_deregister)
-to remove the service. Use the name of the service as the path parameter.
+to remove `webapp1` and `webapp2`. Use the name of the service as the path parameter.
 
 The next step is to add an
 [HTTP-check](https://www.consul.io/docs/agent/checks.html) using the [agent
@@ -198,7 +198,7 @@ Now try to log in to `webapp1`, and stop the application by running
 `./backend.sh stop`. Check that the healthcheck is starting to fail in the
 Conul UI. Try refreshing [the application](http://localhost:8888/) also. If
 everything is set up correctly, the node should be removed from HAProxy, and
-you shouldnt see any errors.
+you shouldn't see any errors.
 
 Try also to log in on the `master` node, and verify that
 `/etc/haproxy/haproxy.cfg` now only have one server entry.

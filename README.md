@@ -1,5 +1,15 @@
 # service-discovery-workshop
 
+# Before the workshop
+
+If you want to prepare youself for the workshop, clone this repo and install
+Vagranti and Virtualbox.
+
+Go to the cloned directory, and run `vagrant up`. Vagrant will now download the
+images you need, and you will be ready for the workshop.
+
+---
+
 ![systems overview](systems-overview.png)
 
 Initial setup
@@ -166,9 +176,6 @@ Using consul template, reconfigure HAProxy to be updated for each change in
 consul.
 
 ## 5. Healtchecks
-
-1. Configure healthchecks for the backends
-1. Turn off the webapp and check that its status has been updated
 
 Now we are adding healthchecks to our webapp (running on `webapp1` and `webapp2`)
 

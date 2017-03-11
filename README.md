@@ -95,6 +95,9 @@ registered a service with a JSON file. The other way use to register a service
 is with the [Consul
 API](https://www.consul.io/docs/agent/http/catalog.html#catalog_register)
 
+Try using the smallest JSON file you can use. We do not use a healthcheck at
+this time.
+
 You can get the ipaddress of the server by running `ifconfig` on the server.
 Use the address starting with `172.20.100.`.
 
@@ -113,7 +116,36 @@ Check that the services has been registered correctly.
 
 Our webapp-backend is going to talk to another service. To know the URL of this
 service, the webapp-backend reads `config.properties`, and put in
-`service.url=` with a comma-seperated list of URLs.
+`service.url=` with a comma-seperated list of URLs. The app reloads this file
+automatically.
+
+To create this file we are going to use a tool called
+[consule-template](https://github.com/hashicorp/consul-template#usage). The
+program will watch for changes in the consul cluster, and write a new file
+based on template after each change. That way our application can read that
+file, and always have up-to-date URLs to call. The default configuration is
+fine, so no need to create a configuration file.
+
+The template files are written as [Go-template with some
+extensions](https://github.com/hashicorp/consul-template#templating-language)
+
+The [service-command](https://github.com/hashicorp/consul-template#service)
+will list out all the IP-s and ports for a given service. Use this to iterate
+through the nodes. The `range`-command is useful to iterate over the values.
+
+Use consule-template to create the `config.properties` file, and with the
+property `service.url=` with IP and and port in a comma separeted list.
+Example of a rendered file:
+
+```
+# config.properties
+service.url=172.20.100.5:8080,172.20.100.6:8080
+```
+
+You have now connected the tag service to our application. Go to
+(http://localhost:8888/) to see that that you can add tags to to-do's. You can
+also check in the bottom which service the application is using. Refreshing a
+couple of times should change this address.
 
 # The backend
 

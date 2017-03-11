@@ -201,3 +201,12 @@ you shouldnt see any errors.
 Try also to log in on the `master` node, and verify that
 `/etc/haproxy/haproxy.cfg` now only have one server entry.
 
+## 6. Finished
+
+Congratulations, you have finished the workshop. Now you just have to clean up. Run this to stop and delete alle the virtual machines:
+
+```bash
+vagrant destroy
+```
+
+

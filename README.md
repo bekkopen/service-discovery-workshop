@@ -1,9 +1,9 @@
 # service-discovery-workshop
 
-# Before the workshop
+## Before the workshop
 
 If you want to prepare youself for the workshop, clone this repo and install
-Vagranti and Virtualbox.
+[Vagrant](https://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/).
 
 Go to the cloned directory, and run `vagrant up`. Vagrant will now download the
 images you need, and you will be ready for the workshop.

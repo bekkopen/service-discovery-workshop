@@ -125,6 +125,9 @@ Try using the smallest JSON file you can use. We do not use a healthcheck at
 this time. Since we are using the agent-API, you dont even need to have an IP
 adress in the file, since it will use the agents IP if it is missing.
 
+You should also start the application by running `service.sh start` inside the
+VM (for `service1` and `service2`).
+
 Use the Consul API to register the services running on `service1` and
 `service2`. A tip is to log in to one of them and put the JSON into a file, and
 use curl to call the API. Example below: `-d` sends the data in `filename.json`

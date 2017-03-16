@@ -21,6 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.network "private_network", ip: "172.20.100.2"
     master.vm.network "forwarded_port", guest: 8500, host: 8500
     master.vm.network "forwarded_port", guest: 80, host: 8888
+    master.vm.provision "shell", path: "provision/install_haproxy.sh"
     master.vm.provision "shell", path: "provision/deploy_frontend.sh"
     master.vm.hostname = "master"
   end

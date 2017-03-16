@@ -1,5 +1,7 @@
 # service-discovery-workshop
 
+Presentation: https://bekkopen.github.io/service-discovery-workshop/
+
 ## Before the workshop
 
 If you want to prepare youself for the workshop, clone this repo and install

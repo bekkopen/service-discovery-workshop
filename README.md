@@ -212,3 +212,10 @@ vagrant destroy
 ```
 
 
+### USB-stick
+
+```bash
+vagrant box add smat/service-discovery-workshop mybox.box
+```
+
+

@@ -10,6 +10,18 @@ If you want to prepare youself for the workshop, clone this repo and install
 Go to the cloned directory, and run `vagrant up`. Vagrant will now download the
 images you need, and you will be ready for the workshop.
 
+
+### USB-stick
+
+We have some USB-sticks you can use so you dont have to download the VM image.
+After installing Vagrant and Virtualbox, run the following command in the
+directory of the USB stick:
+
+```bash
+vagrant box add smat/service-discovery-workshop mybox.box
+```
+
+
 ---
 
 ![systems overview](systems-overview.png)
@@ -213,11 +225,5 @@ Congratulations, you have finished the workshop. Now you just have to clean up. 
 vagrant destroy
 ```
 
-
-### USB-stick
-
-```bash
-vagrant box add smat/service-discovery-workshop mybox.box
-```
 
 

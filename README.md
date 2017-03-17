@@ -134,7 +134,7 @@ use curl to call the API. Example below: `-d` sends the data in `filename.json`
 as the HTTP body.
 
 ```bash
-curl -X PUT -d @filename.json http://localhost:8500/v1/agent/catalog/register
+curl -X PUT -d @filename.json http://localhost:8500/v1/agent/service/register
 ```
 
 Check that the services has been registered correctly.
